@@ -5,9 +5,7 @@
 //  Created by Steven Masuch on 2014-07-19.
 //  Copyright (c) 2014 Lighthouse Labs. All rights reserved.
 //
-
 #import <Foundation/Foundation.h>
-
 #import "Kitchen.h"
 
 int main(int argc, const char * argv[])
@@ -15,14 +13,13 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         
-        NSLog(@"Please pick your pizza size and toppings:");
-        
         Kitchen *restaurantKitchen = [Kitchen new];
         
         while (TRUE) {
             // Loop forever
             
-            NSLog(@"> ");
+            NSLog(@"Please pick your pizza size and toppings:");
+         
             char str[100];
             fgets (str, 100, stdin);
             
@@ -31,13 +28,16 @@ int main(int argc, const char * argv[])
             
             NSLog(@"Input was %@", inputString);
             
+           
+        
             // Take the first word of the command as the size, and the rest as the toppings
             NSArray *commandWords = [inputString componentsSeparatedByString:@" "];
             
             // And then send some message to the kitchen...
+            [restaurantKitchen makePizzaWithUserInput:commandWords];
+            
         }
 
     }
     return 0;
 }
-
